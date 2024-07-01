@@ -40,16 +40,22 @@
     </div>
 
     <script>
-
         const input = document.getElementById("token-question");
         const log = document.getElementById("token-answer");
 
         input.addEventListener("input", updateValue);
 
-        function updateValue(e) {
-            log.innerHTML = e.target.value;
+        function encodeHTML(str) {
+            return str.replace(/&/g, '&amp;')
+                      .replace(/</g, '&lt;')
+                      .replace(/>/g, '&gt;')
+                      .replace(/"/g, '&quot;')
+                      .replace(/'/g, '&#39;');
         }
 
+        function updateValue(e) {
+            log.innerHTML = encodeHTML(e.target.value);
+        }
     </script>
 
 </body>
